@@ -1,4 +1,4 @@
-const backendApiUrl = "http://localhost:8080/api";
+const backendApiUrl = process.env.REACT_APP_API_URL || "http://localhost:8080/api";
 
 const routes = {
   AUTHOR: "author",
