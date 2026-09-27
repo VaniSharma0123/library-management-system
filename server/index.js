@@ -50,11 +50,17 @@ app.use(cors({
 }))
 
 // Set middleware to manage sessions
+app.set("trust proxy", 1); // Render sits behind a proxy — needed for secure cookies to work
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
+    cookie: {
+      secure: true,      // cookie only sent over HTTPS (Render is HTTPS, so fine)
+      sameSite: "none",  // required to allow the cookie across vercel.app <-> onrender.com
+    },
   })
 );
 
