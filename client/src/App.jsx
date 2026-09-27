@@ -1,8 +1,9 @@
+import axios from "axios";
 import {Toaster} from "react-hot-toast";
 import Router from './routes';
 import ThemeProvider from './theme';
 import ScrollToTop from './components/scroll-to-top';
-import axios from "axios";
+
 axios.defaults.withCredentials = true;
 export default function App() {
   return (
