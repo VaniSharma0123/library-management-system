@@ -228,7 +228,7 @@ import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 
 import Iconify from "../../../components/iconify";
-
+import { apiUrl, routes } from "../../../constants";
 
 const BookForm = ({
   isUpdateForm,
@@ -251,7 +251,7 @@ const BookForm = ({
   const getAllAuthors = () => {
 
     axios
-      .get("http://localhost:8080/api/author/getAll")
+      .get(apiUrl(routes.AUTHOR, "getAll"))
 
       .then((response) => {
 
@@ -280,7 +280,7 @@ const BookForm = ({
   const getAllGenres = () => {
 
     axios
-      .get("http://localhost:8080/api/genre/getAll")
+      .get(apiUrl(routes.GENRE, "getAll"))
 
       .then((response) => {
 

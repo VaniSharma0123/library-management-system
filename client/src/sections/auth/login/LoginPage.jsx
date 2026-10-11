@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { Container, Typography } from "@mui/material";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
-
+import { apiUrl, routes } from "../../../constants";
 import Logo from "../../../components/logo";
 import { LoginForm } from "./index";
 
@@ -43,7 +43,7 @@ export default function LoginPage() {
     if (email === "" || password === "") {
       toast.error("Please enter email and password");
     } else {
-      axios.post(`http://localhost:8080/api/auth/login`, { email, password }, { withCredentials: false })
+      axios.post(apiUrl(routes.AUTH, "login"), { email, password }, { withCredentials: false })
         .then((response) => {
           // handle success
           if (response.status === 200) {
@@ -54,7 +54,7 @@ export default function LoginPage() {
         })
         .catch((error) => {
           // handle error
-          toast.error(error.response.data.message);
+          toast.error(error.response?.data?.message || "Cannot reach server, try again");
           console.log(error);
         });
     }
