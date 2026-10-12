@@ -8,6 +8,7 @@ const storage = new CloudinaryStorage({
     folder: "library-management/books",
     allowed_formats: ["jpg", "jpeg", "png"],
     resource_type: "image",
+    transformation: [{ width: 800, crop: "limit", quality: "auto" }]
   },
 });
 
